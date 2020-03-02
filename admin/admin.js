@@ -8,54 +8,54 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function() {
+btn.onclick = function () {
     modal.style.display = "block";
 };
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
     modal.style.display = "none";
 };
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 };
 
-function clock(){
+function clock() {
     var date = new Date(),
         hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours(),
         minutes = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes(),
         seconds = (date.getSeconds() < 10) ? '0' + date.getSeconds() : date.getSeconds();
 
 
-    var day=new Date();
-    var weekday=new Array(7);
-    weekday[0]="Воскресенье";
-    weekday[1]="Понедельник";
-    weekday[2]="Вторник";
-    weekday[3]="Среда";
-    weekday[4]="Четверг";
-    weekday[5]="Пятница";
-    weekday[6]="Суббота";
+    var day = new Date();
+    var weekday = new Array(7);
+    weekday[0] = "Воскресенье";
+    weekday[1] = "Понедельник";
+    weekday[2] = "Вторник";
+    weekday[3] = "Среда";
+    weekday[4] = "Четверг";
+    weekday[5] = "Пятница";
+    weekday[6] = "Суббота";
 
     var mounth = new Array(12);
-    mounth[0]="янв.";
-    mounth[1]="фев.";
-    mounth[2]="мар.";
-    mounth[3]="апр.";
-    mounth[4]="май.";
-    mounth[5]="июн.";
-    mounth[6]="июл.";
-    mounth[7]="авг.";
-    mounth[8]="сен.";
-    mounth[9]="окт.";
-    mounth[10]="ноя.";
-    mounth[11]="дек.";
+    mounth[0] = "янв.";
+    mounth[1] = "фев.";
+    mounth[2] = "мар.";
+    mounth[3] = "апр.";
+    mounth[4] = "май.";
+    mounth[5] = "июн.";
+    mounth[6] = "июл.";
+    mounth[7] = "авг.";
+    mounth[8] = "сен.";
+    mounth[9] = "окт.";
+    mounth[10] = "ноя.";
+    mounth[11] = "дек.";
 
-    document.getElementById("clock").innerHTML = hours + ':' + minutes + ":"+ seconds +"   "+ weekday[day.getDay()]+" "+day.getDate() + " " + mounth[day.getMonth()] +" "+day.getFullYear();
+    document.getElementById("clock").innerHTML = hours + ':' + minutes + ":" + seconds + "   " + weekday[day.getDay()] + " " + day.getDate() + " " + mounth[day.getMonth()] + " " + day.getFullYear();
 }
 
 setInterval(clock, 2000);
@@ -123,7 +123,7 @@ class Lesson {
             },
             success(data) {
                 console.log(" added!");
-                refreshData()
+                updateTimetableList("");
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -131,6 +131,7 @@ class Lesson {
             }
         });
     }
+
     editOpt() {
         $.ajax({
             url: "http://timetable.kcpt-1.ru/api/v3/editLessonInTimetable",
@@ -148,7 +149,7 @@ class Lesson {
             },
             success(data) {
                 console.log(" added!");
-                refreshData()
+                updateTimetableList("");
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -156,6 +157,7 @@ class Lesson {
             }
         });
     }
+
     delOpt() {
         $.ajax({
             url: "http://timetable.kcpt-1.ru/api/v3/removeLessonInTimetable",
@@ -166,7 +168,7 @@ class Lesson {
             },
             success(data) {
                 console.log(" Deleted!");
-                refreshData()
+                updateTimetableList("");
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -208,7 +210,7 @@ class TeacherOption {
             success(data) {
                 document.getElementById("clock").innerHTML = "Добавлено!";
                 console.log(" added!");
-                refreshData()
+                refreshData(4)
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -216,6 +218,7 @@ class TeacherOption {
             }
         });
     }
+
     editOpt() {
         $.ajax({
             url: "http://timetable.kcpt-1.ru/api/v3/editOptions" + this.optName,
@@ -231,7 +234,7 @@ class TeacherOption {
             success(data) {
                 document.getElementById("clock").innerHTML = "Отредактировано!";
                 console.log(" edited!");
-                refreshData()
+                refreshData(4)
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -239,6 +242,7 @@ class TeacherOption {
             }
         });
     }
+
     delOpt() {
         $.ajax({
             url: "http://timetable.kcpt-1.ru/api/v3/removeOptions" + this.optName,
@@ -250,7 +254,7 @@ class TeacherOption {
             success(data) {
                 document.getElementById("clock").innerHTML = "Удалено!";
                 console.log(" deleted!");
-                refreshData()
+                refreshData(4)
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -262,10 +266,11 @@ class TeacherOption {
 
 // optName, id, name
 class Options {
-    constructor(optName, id, name) {
+    constructor(optName, id, name, selectId) {
         this.id = id;
         this.name = name;
         this.optName = optName;
+        this.selectId = selectId;
     }
 
     clearAllData() {
@@ -285,7 +290,6 @@ class Options {
             success(data) {
                 document.getElementById("clock").innerHTML = "Добавлено!";
                 console.log(" added!");
-                refreshData()
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -305,7 +309,6 @@ class Options {
             success(data) {
                 document.getElementById("clock").innerHTML = "Удалено!";
                 console.log(" deleted!");
-                refreshData()
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -327,7 +330,6 @@ class Options {
             success(data) {
                 document.getElementById("clock").innerHTML = "Отредактировано!";
                 console.log(" edited!");
-                refreshData()
             },
             error(header, textError) {
                 console.log(header.status, header.statusText);
@@ -338,59 +340,89 @@ class Options {
 
 }
 
-function create(optIndex) {
+function create(optIndex, selectId) {
     let optName = "";
     let opt = undefined;
-    if(optIndex===0){
+    if (optIndex === 0) {
         optName = "Group";
         opt = new Options(optName, null, prompt("Введите название группы"));
+        refreshData(0)
     }
-    if(optIndex===2){
+    if (optIndex === 2) {
         optName = "Room";
         opt = new Options(optName, null, prompt("Введите номер кабинета"));
     }
-    if(optIndex===3){
+    if (optIndex === 3) {
         optName = "Subject";
         opt = new Options(optName, null, prompt("Введите название предмета"));
     }
-    if(optIndex===4){
+    if (optIndex === 4) {
         optName = "Teacher";
-        opt = new TeacherOption(optName, null, prompt("Введите Имя преподавателя"),prompt("Введите Отчество преподавателя"),prompt("Введите фамилию преподавателя"),undefined);
+        opt = new TeacherOption(optName, null, prompt("Введите Имя преподавателя"), prompt("Введите Отчество преподавателя"), prompt("Введите фамилию преподавателя"), undefined);
     }
-    if(optIndex===5){
-        opt = new Lesson( null,day,group,lessonNumInput.value,subGroupNumInput.value,subject,teacher,room);
+    if (optIndex === 5) {
+        opt = new Lesson(null, day, group, lessonNumInput.value, subGroupNumInput.value, subject, teacher, room);
     }
-    alert("группа "+group+" день "+day+" предмет "+subject+" номер урока "+lessonNumInput.value
-        +" номер подгруппы "+subGroupNumInput.value+" преподаватель "+teacher+" кабинет "+room);
+    alert("группа " + group + " день " + day + " предмет " + subject + " номер урока " + lessonNumInput.value
+        + " номер подгруппы " + subGroupNumInput.value + " преподаватель " + teacher + " кабинет " + room);
     opt.addOpt();
     opt.clearAllData();
-    refreshData()
+    if (optIndex === 0) {
+        refreshData(0)
+    }
+    if (optIndex === 2) {
+        refreshData(2)
+    }
+    if (optIndex === 3) {
+        refreshData(3)
+    }
+    if (optIndex === 4) {
+        refreshData(4)
+    }
+    if (optIndex === 5) {
+        updateTimetableList("")
+    }
 }
-function del(optIndex) {
+
+function del(optIndex, selectId) {
     let optName = "";
     let opt = undefined;
-    if(optIndex===0){
+    if (optIndex === 0) {
         optName = "Group";
-        opt = new Options(optName, group,null);
+        opt = new Options(optName, group, null);
     }
-    if(optIndex===2){
+    if (optIndex === 2) {
         optName = "Room";
-        opt = new Options(optName, room,null);
+        opt = new Options(optName, room, null);
     }
-    if(optIndex===3){
+    if (optIndex === 3) {
         optName = "Subject";
-        opt = new Options(optName, subject,null);
+        opt = new Options(optName, subject, null);
     }
-    if(optIndex===4){
+    if (optIndex === 4) {
         optName = "Teacher";
-        opt = new Options(optName, teacher,null);
+        opt = new TeacherOption(optName, teacher, null, null, null, null);
     }
-    if(optIndex===5){
-        opt = new Lesson(lessonIdInput.value, null,null,null,null,null,null,null);
+    if (optIndex === 5) {
+        opt = new Lesson(lessonIdInput.value, null, null, null, null, null, null, null);
     }
     opt.delOpt();
     opt.clearAllData();
-    refreshData()
+    if (optIndex === 0) {
+        refreshData(0)
+    }
+    if (optIndex === 2) {
+        refreshData(2)
+    }
+    if (optIndex === 3) {
+        refreshData(3)
+    }
+    if (optIndex === 4) {
+        refreshData(4)
+    }
+    if (optIndex === 5) {
+        updateTimetableList("")
+    }
 }
 
 
@@ -398,7 +430,7 @@ const timeLessonMnFr = ["", "8:15\n9:00", "9:00\n9:45", "10:00\n10:45", "10:45\n
 const timeLessonSt = ["", "8:15\n9:00", "9:00\n9:45", "9:50\n10:35", "10:35\n11:20", "11:50\n12:35", "12:35\n13:20", "13:30\n14:15", "14:15\n15:00", "15:10\n15:55", "15:55\n16:40", "16:45\n17:30", "17:30\n18:15"];
 
 
-function getOptionsList() {
+function getOptionsList(selectId) {
     $.ajax({
         url: "http://timetable.kcpt-1.ru/api/v3/viewAllOptions",
         type: "get",
@@ -408,16 +440,27 @@ function getOptionsList() {
             console.log(data);
 
             let selectDayOrGroup = [group, day, room, subject, teacher];
-            clearSelect(groupSelect);
-            clearSelect(daySelect);
-            clearSelect(roomSelect);
-            clearSelect(subjectSelect);
-            clearSelect(teacherSelect);
-            appendInView(data.groups, 'option', groupSelect, selectDayOrGroup[0], 0);
-            appendInView(data.dayOfWeek, 'option', daySelect, selectDayOrGroup[1], 0);
-            appendInView(data.rooms, 'option', roomSelect, selectDayOrGroup[2], 0);
-            appendInView(data.subject, 'option', subjectSelect, selectDayOrGroup[3], 0);
-            appendInView(data.teachers, 'option', teacherSelect, selectDayOrGroup[4], 1);
+            let selector = [groupSelect, daySelect, roomSelect, subjectSelect, teacherSelect];
+            if (selectId === 4) {
+                clearSelect(selector[4]);
+                appendInView(data.teachers, 'option', selector[selectId], selectDayOrGroup[selectId], 1);
+            }
+            if (selectId === 0) {
+                clearSelect(selector[0]);
+                appendInView(data.groups, 'option', selector[0], selectDayOrGroup[0], 0);
+            }
+            if (selectId === 1) {
+                clearSelect(selector[1]);
+                appendInView(data.dayOfWeek, 'option', selector[1], selectDayOrGroup[1], 0);
+            }
+            if (selectId === 2) {
+                clearSelect(selector[2]);
+                appendInView(data.rooms, 'option', selector[2], selectDayOrGroup[2], 0);
+            }
+            if (selectId === 3) {
+                clearSelect(selector[3]);
+                appendInView(data.subject, 'option', selector[3], selectDayOrGroup[3], 0);
+            }
         },
         error(header, textError) {
             console.log(header.status, header.statusText);
@@ -436,9 +479,9 @@ function appendInView(arr, createdElement, appendIn, selectDayOrGroups, teacherO
     let element1 = document.createElement(createdElement);
     element1.setAttribute("value", "Выберите");
     element1.innerHTML = "Выберите";
-    element1.setAttribute("selected", "selected")
+    element1.setAttribute("selected", "selected");
 
-    list.push(element1);
+    /*    list.push(element1);*/
     for (let i = 0; i < arr.length; i++) {
         let element = document.createElement(createdElement);
         if (teacherOrNot === 0) {
@@ -506,29 +549,7 @@ function createTableLine(data, numSubject) {
     let dive = document.createElement('div');
 
     dive.setAttribute("class", "tableLine");
-    let startstr = "<br>" +"<div>"+data.timetable[numSubject].id+"</div>"+ "<div class='numLesson lessonBlock'>" + data.timetable[numSubject].numLesson + "</div>" + "<div class='subject lessonBlock'>" + data.timetable[numSubject].subject + " </div>" + "<div class='teacher lessonBlock'>" + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">" + "<div>" + data.timetable[numSubject].teacher + "</div>" + "</div>" + "<div class='room lessonBlock'>" + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">" + "<div>" + data.timetable[numSubject].room + "</div>" + "</div>" + "<div class='timeLesson lessonBlock'>";
-
-    if (data.timetable[numSubject].subgroup !== 1 || data.timetable[numSubject].subgroup !== "1") {
-        if (day === "6") {
-            dive.innerHTML =startstr + timeLessonSt[data.timetable[numSubject].numLesson] + endStr;
-        } else {
-            dive.innerHTML = startstr+ timeLessonMnFr[data.timetable[numSubject].numLesson] + endStr;
-        }
-    } else {
-        if (day === "6") {
-            dive.innerHTML = "<br>"+ "<div class='subGroup'>" + data.timetable[numSubject].subgroup + startstr +  timeLessonSt[data.timetable[numSubject].numLesson] + endStr;
-        } else {
-            dive.innerHTML ="<br>"+ "<div class='subGroup'>" + data.timetable[numSubject].subgroup + startstr  + timeLessonMnFr[data.timetable[numSubject].numLesson] + endStr;
-        }
-    }
-    allTable.append(dive);
-}
-
-function createTableLine(data, numSubject) {
-    let dive = document.createElement('div');
-
-    dive.setAttribute("class", "tableLine");
-    let endStr = "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson("+data.timetable[numSubject].id+")\" type=\"button\">"+"<br>";
+    let endStr = "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson(" + data.timetable[numSubject].id + ")\" type=\"button\">" + "<br>";
 
     let startStr = "<br>"
         + "<div class='numLesson lessonBlock'>"
@@ -559,7 +580,7 @@ function createTableLine(data, numSubject) {
         + data.timetable[numSubject].numLesson
         + "</div>"
         + "<div class='subject lessonBlock'>"
-        + data.timetable[numSubject].subgroup +". "+data.timetable[numSubject].subject
+        + data.timetable[numSubject].subgroup + ". " + data.timetable[numSubject].subject
         + " </div>"
         +
         "<div class='teacher lessonBlock'>"
@@ -583,34 +604,34 @@ function createTableLine(data, numSubject) {
             dive.innerHTML =
                 startStr
                 + timeLessonSt[data.timetable[numSubject].numLesson]
-                + "</div>"+ endStr
+                + "</div>" + endStr
                 + "<br>";
         } else {
             dive.innerHTML = startStr
                 + timeLessonMnFr[data.timetable[numSubject].numLesson]
-                + "</div>"+ endStr
+                + "</div>" + endStr
                 + "<br>";
         }
     }
-    if (data.timetable[numSubject].subgroup === 1 || data.timetable[numSubject].subgroup === "1")  {
+    if (data.timetable[numSubject].subgroup === 1 || data.timetable[numSubject].subgroup === "1") {
         if (day === "6") {
             dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>" + endStr
                 + "<br>";
         } else {
             dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>" + endStr
                 + "<br>";
         }
     }
-    if (data.timetable[numSubject].subgroup === 2 || data.timetable[numSubject].subgroup === "2")  {
+    if (data.timetable[numSubject].subgroup === 2 || data.timetable[numSubject].subgroup === "2") {
         if (day === "6") {
-            dive.innerHTML =subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+            dive.innerHTML = subgroupStartStr
+                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>" + endStr
                 + "<br>";
         } else {
             dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>" + endStr
                 + "<br>";
         }
     }
@@ -618,8 +639,8 @@ function createTableLine(data, numSubject) {
 }
 
 
-function deleteLesson(id){
-    let lesson = new Lesson(id,null,null,null,null,null,null,null);
+function deleteLesson(id) {
+    let lesson = new Lesson(id, null, null, null, null, null, null, null);
     lesson.delOpt()
 }
 
@@ -633,6 +654,7 @@ function selectRoom(opt) {
     room = opt.value;
     updateTimetableList("Расписание на ");
 }
+
 function selectSubject(opt) {
     subject = opt.value;
     updateTimetableList("Расписание на ");
@@ -642,17 +664,22 @@ function selectTeacher(opt) {
     teacher = opt.value;
     updateTimetableList("Расписание на ");
 }
+
 function selectDay(opt) {
     day = opt.value;
     updateTimetableList("Расписание на ");
 }
 
 
-getOptionsList();
+getOptionsList(0);
+getOptionsList(1);
+getOptionsList(2);
+getOptionsList(3);
+getOptionsList(4);
 updateTimetableList("Расписание на сегодня: ");
 
-function refreshData() {
-    getOptionsList();
+function refreshData(selectId) {
+    getOptionsList(selectId);
     updateTimetableList("Расписание на сегодня: ");
 }
 

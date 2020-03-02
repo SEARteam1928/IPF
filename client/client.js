@@ -39,10 +39,10 @@ function appendInView(arr, createdElement, appendIn, selectDayOrGroups) {
         element.append(arr[i].name);
         element.setAttribute("value", arr[i].id);
         element.dataset["id"] = arr[i].id;
-        if ((i + 1).toString() === selectDayOrGroups) {
+        if (arr[i].id.toString() === selectDayOrGroups) {
             element.setAttribute("selected", "selected")
         }
-        if ((i + 1) === selectDayOrGroups) {
+        if (arr[i].id.toString() === selectDayOrGroups) {
             element.setAttribute("selected", "selected")
         }
         list.push(element);
