@@ -1,3 +1,29 @@
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+
 function clock(){
     var date = new Date(),
         hours = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours(),
@@ -139,7 +165,7 @@ class Lesson {
                 id: this.id
             },
             success(data) {
-                console.log(" added!");
+                console.log(" Deleted!");
                 refreshData()
             },
             error(header, textError) {
@@ -480,21 +506,117 @@ function createTableLine(data, numSubject) {
     let dive = document.createElement('div');
 
     dive.setAttribute("class", "tableLine");
+    let startstr = "<br>" +"<div>"+data.timetable[numSubject].id+"</div>"+ "<div class='numLesson lessonBlock'>" + data.timetable[numSubject].numLesson + "</div>" + "<div class='subject lessonBlock'>" + data.timetable[numSubject].subject + " </div>" + "<div class='teacher lessonBlock'>" + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">" + "<div>" + data.timetable[numSubject].teacher + "</div>" + "</div>" + "<div class='room lessonBlock'>" + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">" + "<div>" + data.timetable[numSubject].room + "</div>" + "</div>" + "<div class='timeLesson lessonBlock'>";
+
     if (data.timetable[numSubject].subgroup !== 1 || data.timetable[numSubject].subgroup !== "1") {
         if (day === "6") {
-            dive.innerHTML = "<br>" +"<div>"+data.timetable[numSubject].id+"</div>"+ "<div class='numLesson lessonBlock'>" + data.timetable[numSubject].numLesson + "</div>" + "<div class='subject lessonBlock'>" + data.timetable[numSubject].subject + " </div>" + "<div class='teacher lessonBlock'>" + "<img src=\"baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">" + "<div>" + data.timetable[numSubject].teacher + "</div>" + "</div>" + "<div class='room lessonBlock'>" + "<img src=\"baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">" + "<div>" + data.timetable[numSubject].room + "</div>" + "</div>" + "<div class='timeLesson lessonBlock'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson("+data.timetable[numSubject].id+")\" type=\"button\">"+"<br>";
+            dive.innerHTML =startstr + timeLessonSt[data.timetable[numSubject].numLesson] + endStr;
         } else {
-            dive.innerHTML = "<br>" + "<div>"+data.timetable[numSubject].id+"</div>"+ "<div class='numLesson lessonBlock'>" + data.timetable[numSubject].numLesson + "</div>" + "<div class='subject lessonBlock'>" + data.timetable[numSubject].subject + " </div>" + "<div class='teacher lessonBlock'>" + "<img src=\"baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">" + "<div>" + data.timetable[numSubject].teacher + "</div>" + "</div>" + "<div class='room lessonBlock'>" + "<img src=\"baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">" + "<div>" + data.timetable[numSubject].room + "</div>" + "</div>" + "<div class='timeLesson lessonBlock'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson("+data.timetable[numSubject].id+")\" type=\"button\">"+ "<br>";
+            dive.innerHTML = startstr+ timeLessonMnFr[data.timetable[numSubject].numLesson] + endStr;
         }
     } else {
         if (day === "6") {
-            dive.innerHTML = "<br>"+"<div>"+data.timetable[numSubject].id+"</div>"+ "<div class='numLesson'>" + data.timetable[numSubject].numLesson + "</div>" + "<div class='subGroup'>" + data.timetable[numSubject].subgroup + " </div>" + "<div class='subject'>" + data.timetable[numSubject].subject + " </div>" + "<div class='teacher'>" + data.timetable[numSubject].teacher + "</div>" + "<div class='room'>" + data.timetable[numSubject].room + "</div>" + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson("+data.timetable[numSubject].id+")\" type=\"button\">"+ "<br>";
+            dive.innerHTML = "<br>"+ "<div class='subGroup'>" + data.timetable[numSubject].subgroup + startstr +  timeLessonSt[data.timetable[numSubject].numLesson] + endStr;
         } else {
-            dive.innerHTML = "<br>"+"<div>"+data.timetable[numSubject].id+"</div>"+ "<div class='numLesson'>" + data.timetable[numSubject].numLesson + "</div>" + "<div class='subGroup'>" + data.timetable[numSubject].subgroup + "</div>" + "<div class='subject'>" + data.timetable[numSubject].subject + " </div>" + "<div class='teacher'>" + data.timetable[numSubject].teacher + "</div>" + "<div class='room'>" + data.timetable[numSubject].room + "</div>" + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson("+data.timetable[numSubject].id+")\" type=\"button\">"+ "<br>";
+            dive.innerHTML ="<br>"+ "<div class='subGroup'>" + data.timetable[numSubject].subgroup + startstr  + timeLessonMnFr[data.timetable[numSubject].numLesson] + endStr;
         }
     }
     allTable.append(dive);
 }
+
+function createTableLine(data, numSubject) {
+    let dive = document.createElement('div');
+
+    dive.setAttribute("class", "tableLine");
+    let endStr = "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson("+data.timetable[numSubject].id+")\" type=\"button\">"+"<br>";
+
+    let startStr = "<br>"
+        + "<div class='numLesson lessonBlock'>"
+        + data.timetable[numSubject].numLesson
+        + "</div>"
+        + "<div class='subject lessonBlock'>"
+        + data.timetable[numSubject].subject
+        + " </div>"
+        +
+        "<div class='teacher lessonBlock'>"
+        + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
+        +
+        "<div>"
+        + data.timetable[numSubject].teacher
+        + "</div>"
+        + "</div>"
+        +
+        "<div class='room lessonBlock'>"
+        + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
+        +
+        "<div>"
+        + data.timetable[numSubject].room
+        + "</div>"
+        + "</div>"
+        + "<div class='timeLesson lessonBlock'>";
+    let subgroupStartStr = "<br>"
+        + "<div class='numLesson lessonBlock'>"
+        + data.timetable[numSubject].numLesson
+        + "</div>"
+        + "<div class='subject lessonBlock'>"
+        + data.timetable[numSubject].subgroup +". "+data.timetable[numSubject].subject
+        + " </div>"
+        +
+        "<div class='teacher lessonBlock'>"
+        + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
+        +
+        "<div>"
+        + data.timetable[numSubject].teacher
+        + "</div>"
+        + "</div>"
+        +
+        "<div class='room lessonBlock'>"
+        + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
+        +
+        "<div>"
+        + data.timetable[numSubject].room
+        + "</div>"
+        + "</div>"
+        + "<div class='timeLesson lessonBlock'>";
+    if (data.timetable[numSubject].subgroup === 0 || data.timetable[numSubject].subgroup === "0") {
+        if (day === "6") {
+            dive.innerHTML =
+                startStr
+                + timeLessonSt[data.timetable[numSubject].numLesson]
+                + "</div>"+ endStr
+                + "<br>";
+        } else {
+            dive.innerHTML = startStr
+                + timeLessonMnFr[data.timetable[numSubject].numLesson]
+                + "</div>"+ endStr
+                + "<br>";
+        }
+    }
+    if (data.timetable[numSubject].subgroup === 1 || data.timetable[numSubject].subgroup === "1")  {
+        if (day === "6") {
+            dive.innerHTML = subgroupStartStr
+                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<br>";
+        } else {
+            dive.innerHTML = subgroupStartStr
+                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<br>";
+        }
+    }
+    if (data.timetable[numSubject].subgroup === 2 || data.timetable[numSubject].subgroup === "2")  {
+        if (day === "6") {
+            dive.innerHTML =subgroupStartStr
+                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<br>";
+        } else {
+            dive.innerHTML = subgroupStartStr
+                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"+ endStr
+                + "<br>";
+        }
+    }
+    allTable.append(dive);
+}
+
 
 function deleteLesson(id){
     let lesson = new Lesson(id,null,null,null,null,null,null,null);
