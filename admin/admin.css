@@ -50,6 +50,8 @@ body {
     to {top:0; opacity:1}
 }
 
+
+
 /* The Close Button */
 .close {
     color: white;
@@ -147,6 +149,8 @@ body {
     border: 1px solid #27b9f4;
     color: #FFFFFF;
     margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
     box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
     font-size: 12px;
     padding: 5px;
@@ -219,11 +223,34 @@ border-right: #20bbf4 solid 1px;
     color: #FFFFFF;
     flex-wrap: wrap;
     margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
     box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
     font-size: 12px;
     padding: 5px;
     border-radius: 10px;
     border-right: #20bbf4 solid 1px;
+}
+.dayselectdiv p{
+    font-weight: bold;
+}
+.roomselectdiv p{
+    font-weight: bold;
+}
+.groupselectdiv p{
+    font-weight: bold;
+}
+.subjectselectdiv p{
+    font-weight: bold;
+}
+.teacherselectdiv p{
+    font-weight: bold;
+}
+.lessonNumDiv p{
+    font-weight: bold;
+}
+.subGroupNumDiv p{
+    font-weight: bold;
 }
 .roomselectdiv{
     flex: 1;
@@ -662,7 +689,7 @@ border-right: #20bbf4 solid 1px;
     }
 
 
-    .changes {
+/*    .changes {
         margin-right: 5px;
         width: calc(30% + 1vw);
         margin-top: 25px;
@@ -672,5 +699,5 @@ border-right: #20bbf4 solid 1px;
         border-radius: 50px;
         padding: 35px;
         font-size: 50px;
-    }
+    }*/
 }

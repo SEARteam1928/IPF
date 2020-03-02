@@ -363,8 +363,8 @@ function create(optIndex, selectId) {
     if (optIndex === 5) {
         opt = new Lesson(null, day, group, lessonNumInput.value, subGroupNumInput.value, subject, teacher, room);
     }
-    alert("группа " + group + " день " + day + " предмет " + subject + " номер урока " + lessonNumInput.value
-        + " номер подгруппы " + subGroupNumInput.value + " преподаватель " + teacher + " кабинет " + room);
+    /*    alert("группа " + group + " день " + day + " предмет " + subject + " номер урока " + lessonNumInput.value
+            + " номер подгруппы " + subGroupNumInput.value + " преподаватель " + teacher + " кабинет " + room);*/
     opt.addOpt();
     opt.clearAllData();
     if (optIndex === 0) {
@@ -481,7 +481,7 @@ function appendInView(arr, createdElement, appendIn, selectDayOrGroups, teacherO
     element1.innerHTML = "Выберите";
     element1.setAttribute("selected", "selected");
 
-    /*    list.push(element1);*/
+    list.push(element1);
     for (let i = 0; i < arr.length; i++) {
         let element = document.createElement(createdElement);
         if (teacherOrNot === 0) {
@@ -671,11 +671,9 @@ function selectDay(opt) {
 }
 
 
-getOptionsList(0);
-getOptionsList(1);
-getOptionsList(2);
-getOptionsList(3);
-getOptionsList(4);
+for (let i = 0; i <= 4; i++) {
+    getOptionsList(i);
+}
 updateTimetableList("Расписание на сегодня: ");
 
 function refreshData(selectId) {

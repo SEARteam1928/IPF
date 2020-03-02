@@ -23,16 +23,11 @@
         </div>
         <div class="modal-body">
             <div class="allSelect">
-
-                <div class="roomselectdiv">
-                    <p>Номер кабинета</p>
-                    <select class="roomSelect" id="roomSelect" onchange="selectRoom(this)" name="select">
-                    </select>
-                    <input class="addBt" value="+" onclick="create(2,2)" type="button">
-                    <br>
-                    <br>
-                    <input class="delBt" value="Х" onclick="del(2,2)" type="button">
+                <div class="lessonNumDiv">
+                    <p>Номер урока</p>
+                    <input id="lessonNumInput" type="number" min="1" max="12" value="1">
                 </div>
+
                 <div class="subjectselectdiv">
                     <p>Название предмета</p>
                     <select class="subjectSelect" id="subjectSelect" onchange="selectSubject(this)" name="select">
@@ -51,9 +46,14 @@
                     <br>
                     <input class="delBt" value="X" onclick="del(4,4)" type="button">
                 </div>
-                <div class="lessonNumDiv">
-                    <p>Номер урока</p>
-                    <input id="lessonNumInput" type="number" min="1" max="12" value="1">
+                <div class="roomselectdiv">
+                    <p>Номер кабинета</p>
+                    <select class="roomSelect" id="roomSelect" onchange="selectRoom(this)" name="select">
+                    </select>
+                    <input class="addBt" value="+" onclick="create(2,2)" type="button">
+                    <br>
+                    <br>
+                    <input class="delBt" value="Х" onclick="del(2,2)" type="button">
                 </div>
                 <div class="subGroupNumDiv">
                     <p>Номер подгруппы</p>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <input id="addLessonBt" class="addLessonBt" value="+" onclick="create(5)" type="button">        </div>
+            <input id="addLessonBt" class="addLessonBt" value="+" onclick="create(5);     modal.style.display = 'none';" type="button">        </div>
     </div>
 
 </div>
