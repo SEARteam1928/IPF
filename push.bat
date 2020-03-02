@@ -4,6 +4,4 @@ git status
 git commit -m '%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%'
 git status
 git push
-:pass
-
-goto pass
+TIMEOUT [/T] 50
