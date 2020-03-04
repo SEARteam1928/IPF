@@ -4,4 +4,5 @@ git status
 git commit -m '%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%%random%'
 git status
 git push
+git status
 pause
