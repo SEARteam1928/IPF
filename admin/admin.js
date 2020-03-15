@@ -426,13 +426,13 @@ function del(optIndex, selectId) {
 }
 
 
-const timeLessonMnFr = ["", "8:15\n9:00", "9:00\n9:45", "10:00\n10:45", "10:45\n11:30", "12:00\n12:45", "12:45\n13:30", "14:00\n14:45", "14:45\n15:30", "15:45\n16:30", "16:30\n17:15", "17:25\n18:10", "18:10\n18:55"];
+const timeLessonMnFr = ["", " 8:15\n\ 9:00", "9:00\n9:45", "10:00\n10:45", "10:45\n11:30", "12:00\n12:45", "12:45\n13:30", "14:00\n14:45", "14:45\n15:30", "15:45\n16:30", "16:30\n17:15", "17:25\n18:10", "18:10\n18:55"];
 const timeLessonSt = ["", "8:15\n9:00", "9:00\n9:45", "9:50\n10:35", "10:35\n11:20", "11:50\n12:35", "12:35\n13:20", "13:30\n14:15", "14:15\n15:00", "15:10\n15:55", "15:55\n16:40", "16:45\n17:30", "17:30\n18:15"];
 
 
 function getOptionsList(selectId) {
     $.ajax({
-        url: "http://timetable.kcpt-1.ru/api/v3/viewAllOptions",
+        url: "http://timetable.kcpt-1.ru/api/v3/viewAllOptionsForTimetable",
         type: "get",
         dataType: "json",
         data: {},
@@ -549,7 +549,7 @@ function createTableLine(data, numSubject) {
     let dive = document.createElement('div');
 
     dive.setAttribute("class", "tableLine");
-    let endStr = "</div>" + "<input value=\"X\" class='deleteLessonBt' onclick=\"deleteLesson(" + data.timetable[numSubject].id + ")\" type=\"button\">" + "<br>";
+    let endStr = "</div>" + "<div class='deleteLessonBt' onclick=\"deleteLesson(" + data.timetable[numSubject].id + ")\"><img src=\"src/delete48.png\" alt=\"person\" class=\"deleteIco\"></div>" + "<br>";
 
     let startStr = "<br>"
         + "<div class='numLesson lessonBlock'>"
@@ -574,7 +574,8 @@ function createTableLine(data, numSubject) {
         + data.timetable[numSubject].room
         + "</div>"
         + "</div>"
-        + "<div class='timeLesson lessonBlock'>";
+        + "<div class='timeLesson lessonBlock'>"
+        + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
     let subgroupStartStr = "<br>"
         + "<div class='numLesson lessonBlock'>"
         + data.timetable[numSubject].numLesson
@@ -598,7 +599,8 @@ function createTableLine(data, numSubject) {
         + data.timetable[numSubject].room
         + "</div>"
         + "</div>"
-        + "<div class='timeLesson lessonBlock'>";
+        + "<div class='timeLesson lessonBlock'>"
+        + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"room_ico_img\">";
     if (data.timetable[numSubject].subgroup === 0 || data.timetable[numSubject].subgroup === "0") {
         if (day === "6") {
             dive.innerHTML =
