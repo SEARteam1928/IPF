@@ -1,9 +1,57 @@
+.infoBox {
+    position: fixed;
+    width: calc(7.8% + 1vw);
+    height: calc(13% + 1vw);
+    bottom: 0;
+    background: linear-gradient(to bottom, #0079bc 5%, #0079bc 100%);
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+}
 
-.navFirst{
+.clock {
+    position: fixed;
+    width: calc(7.8% + 1vw);
+    height: calc(7% + 1vw);
+    bottom: 0;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.clock div{
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 13px;
+}
+
+.navFirst {
 
 }
 
-.navFirstImg{
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.4);
+}
+
+.navFirstImg {
     position: fixed;
     background-size: 100%;
     height: 100%;
@@ -12,11 +60,11 @@
     display: flex;
 }
 
-.navSecond{
+.navSecond {
 
 }
 
-.navSecondImg{
+.navSecondImg {
     position: fixed;
     background-size: 100%;
     height: 100%;
@@ -25,14 +73,15 @@
     display: flex;
 }
 
-.table_with_space{
+.table_with_space {
     display: flex;
 }
-.left_space{
+
+.left_space {
     width: calc(38% + 1vw);
 }
 
-.menu_all_items{
+.menu_all_items {
     padding-top: 15px;
     position: fixed;
     height: calc(75% + 1vw);
@@ -43,9 +92,11 @@
     /*
     left: calc(0.001% + 1vw);
     */
-    left:1px;
-    border-radius: 10px;}
-.menu_items{
+    left: 1px;
+    border-radius: 10px;
+}
+
+.menu_items {
     list-style-type: none;
     border: none;
     width: calc(105% + 1vw);
@@ -76,11 +127,12 @@
     /*
     border-radius: 10px;
     */
-    background:linear-gradient(to bottom, #007bbd 5%, #007bbd 100%);
+    background: linear-gradient(to bottom, #007bbd 5%, #007bbd 100%);
 }
+
 .menu_items:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
 
 .groupSelect {
@@ -97,26 +149,14 @@
     border-radius: 10px;
 }
 
-::-webkit-scrollbar {
-    width: 4px;
-}
 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.4);
-}
-.groupSelect input{
+.groupSelect input {
     list-style-type: none;
     border: none;
     width: calc(120% + 1vw);
-/*
-margin: 1px;
-*/
+    /*
+    margin: 1px;
+    */
     /*
     border-bottom: 1px solid #27b9f4;
     */
@@ -136,26 +176,31 @@ margin: 1px;
     padding: 10px;
 
 }
+
 .changes {
     text-decoration: none;
 }
+
 .groupSelect input:hover {
-    background:linear-gradient(to bottom, #27b9f4 5%, #27b9f4 100%);
+    background: linear-gradient(to bottom, #27b9f4 5%, #27b9f4 100%);
     /*
     border-radius: 10px;
     */
 }
+
 .groupSelect input:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }
 
-.header_space{
+.header_space {
     height: 129px;
 }
-.footer_space{
+
+.footer_space {
     height: 150px;
 }
+
 .daySelect {
     margin-top: 10px;
     position: fixed;
@@ -169,41 +214,44 @@ margin: 1px;
     padding: 10px;
 }
 
-.dayOfWeekNotSelected{
-    background: no-repeat center/100%  url("../src/day_circle_not_selected.png");
+.dayOfWeekNotSelected {
+    background: no-repeat center/100% url("../src/day_circle_not_selected.png");
     list-style-type: none;
     font-weight: 600;
     font-family: sans-serif;
     color: #FFFFFF;
     border: none;
-    font-size:calc(15% + 1vw);;
+    font-size: calc(15% + 1vw);;
     padding: 20px;
     margin: 4px;
 }
 
 .dayOfWeekNotSelected:hover {
-    background: no-repeat center/100%  url("../src/day_circle_selected.png");
-}
-.dayOfWeekNotSelected:active {
-    position:relative;
-    top:1px;
+    background: no-repeat center/100% url("../src/day_circle_hover.png");
 }
 
-.dayOfWeekSelected{
-    background: no-repeat center/100%  url("../src/day_circle_selected.png");
+.dayOfWeekNotSelected:active {
+    position: relative;
+    top: 1px;
+}
+
+.dayOfWeekSelected {
+    background: no-repeat center/100% url("../src/day_circle_selected.png");
     list-style-type: none;
     font-weight: 600;
     font-family: sans-serif;
     color: #FFFFFF;
     border: none;
-    font-size:calc(15% + 1vw);;
+    font-size: calc(15% + 1vw);;
     padding: 20px;
     margin: 4px;
 }
+
 .dayOfWeekSelected:hover {
-    background: no-repeat center/100%  url("../src/day_circle_selected.png");
+    background: no-repeat center/100% url("../src/day_circle_hover.png");
 }
+
 .dayOfWeekSelected:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
 }

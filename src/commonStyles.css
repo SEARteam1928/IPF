@@ -8,15 +8,15 @@ body {
 }
 
 .teacher_ico_img{
-    height: 50px;
+    height: 35px;
 }
 .room_ico_img{
-    height: 40px;
+    height: 30px;
 }
 
 .time_ico_img{
-    height: 30px;
-    margin: 5px;
+    height: 25px;
+    margin-right: 5px;
 }
 .checkScreenSize{
     top: 0;
@@ -84,7 +84,10 @@ body {
 
 .logoAdmin {
     position: fixed;
+    height: calc(11% + 1vw);
+    /*
     max-height: calc(12% + 1vw);
+    */
     top: 5px;
     left: 20px;
 }
@@ -95,7 +98,10 @@ body {
     position: fixed;
     background-size: 100%;
     width: 100%;
+    height: 126px;
+    /*
     height: calc(17% + 1vw);
+    */
 }
 /*@media screen and (min-width: 990px) {*/
     .allTable {
