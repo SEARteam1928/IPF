@@ -1,0 +1,104 @@
+.daySelect {
+    margin-top: 10px;
+    position: fixed;
+    width: calc(5% + 1vw);
+    margin-right: 5px;
+    top: 15%;
+    left: calc(21.5% + 1vw);
+    padding: 10px;
+}
+
+.dayOfWeekNotSelected {
+    background: no-repeat center/100% url("../../src/day_circle_not_selected.png");
+    list-style-type: none;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    font-size: calc(15% + 1vw);;
+    padding: 20px;
+    margin: 4px;
+}
+
+.dayOfWeekNotSelected:hover {
+    background: no-repeat center/100% url("../../src/day_circle_hover.png");
+}
+
+.dayOfWeekNotSelected:active {
+    position: relative;
+    top: 1px;
+}
+
+.dayOfWeekSelected {
+    background: no-repeat center/100% url("../../src/day_circle_selected.png");
+    list-style-type: none;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    font-size: calc(15% + 1vw);;
+    padding: 20px;
+    margin: 4px;
+}
+
+.dayOfWeekSelected:hover {
+    background: no-repeat center/100% url("../../src/day_circle_hover.png");
+}
+
+.dayOfWeekSelected:active {
+    position: relative;
+    top: 1px;
+}
+
+
+.daySelect {
+    margin-top: 10px;
+    position: fixed;
+    width: calc(5% + 1vw);
+    margin-right: 5px;
+    top: 15%;
+    left: calc(21.5% + 1vw);
+    padding: 10px;
+}
+
+.dayOfWeekNotSelected {
+    background: no-repeat center/100% url("../src/day_circle_not_selected.png");
+    list-style-type: none;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    font-size: calc(15% + 1vw);;
+    padding: 20px;
+    margin: 4px;
+}
+
+.dayOfWeekNotSelected:hover {
+    background: no-repeat center/100% url("../src/day_circle_hover.png");
+}
+
+.dayOfWeekNotSelected:active {
+    position: relative;
+    top: 1px;
+}
+
+.dayOfWeekSelected {
+    background: no-repeat center/100% url("../src/day_circle_selected.png");
+    list-style-type: none;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    border: none;
+    font-size: calc(15% + 1vw);;
+    padding: 20px;
+    margin: 4px;
+}
+
+.dayOfWeekSelected:hover {
+    background: no-repeat center/100% url("../src/day_circle_hover.png");
+}
+
+.dayOfWeekSelected:active {
+    position: relative;
+    top: 1px;
+}

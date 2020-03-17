@@ -1,0 +1,63 @@
+
+.deleteLessonBt {
+    background: linear-gradient(to bottom, #f44336 5%, #f44336 100%);
+    background-color: #e87169;
+    border-radius: 15px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    border: none;
+    width: 30px;
+    margin-top: 10px;
+    height: 30px;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ba000d;
+}
+
+.deleteLessonBt:hover {
+    background: linear-gradient(to bottom, #ff5252 5%, #ff7961 100%);
+    background-color: #f44336;
+}
+
+.deleteLessonBt:active {
+    top: 1px;
+}
+
+.deleteIco {
+    left: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.delBt {
+    background: linear-gradient(to bottom, #ff5252 5%, #ff5252 100%);
+    background-color: #e87169;
+    border-radius: 42px;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    width: calc(80% + 1vw);
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: none;
+    font-weight: bold;
+    padding: 10px 10px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #c50e29;
+}
+
+.delBt:hover {
+    background: linear-gradient(to bottom, #ff5252 5%, #ff867f 100%);
+    background-color: #ff5252;
+}
+
+.delBt:active {
+    position: relative;
+    top: 1px;
+}

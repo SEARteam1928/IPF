@@ -7,27 +7,30 @@ body {
     font-family: 'Montserrat', sans-serif, Arial, Helvetica;
 }
 
-.teacher_ico_img{
+.teacher_ico_img {
     height: 35px;
 }
-.room_ico_img{
+
+.room_ico_img {
     height: 30px;
 }
 
-.time_ico_img{
+.time_ico_img {
     height: 25px;
     margin-right: 5px;
 }
-.checkScreenSize{
+
+.checkScreenSize {
     top: 0;
     position: fixed;
     font-size: 100px;
 }
 
-.header_space{
+.header_space {
     height: 200px;
 }
-.footer_space{
+
+.footer_space {
     height: 500px;
 }
 
@@ -40,12 +43,6 @@ body {
 .groupSelect {
 
 }
-
-
-
-
-
-
 
 
 .groupName {
@@ -81,248 +78,104 @@ body {
 }
 
 
-
 .logoAdmin {
     position: fixed;
     height: 90px;
-    /*
-    max-height: calc(12% + 1vw);
-    */
     top: 5px;
     left: 20px;
 }
 
 
 .header_img {
-    top:0;
+    top: 0;
     position: fixed;
     background-size: 100%;
     width: 100%;
     height: 126px;
-    /*
-    height: calc(17% + 1vw);
-    */
 }
-/*@media screen and (min-width: 990px) {*/
-    .allTable {
 
-        top: 20%;
-        left: 0;
-        width: 100%;
-    }
-    .teacher {
-        flex: 4;
-        display: flex;
-        font-size: calc(20% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-    }
-    .numLesson {
-        color: #FFFFFF;
-        background: #20bbf4;
-        padding: 1%;
-        justify-content: space-around;
-        font-size: calc(45% + 1vw);
-        margin-right: auto;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-        flex: 0.2;
-    }
+.allTable {
 
-    .subGroup {
-        font-size: calc(40% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-        flex: 1;
-    }
+    top: 20%;
+    left: 0;
+    width: 100%;
+}
 
-    .subject {
-        flex: 9;
-        font-size: calc(40% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-    }
+.teacher {
+    flex: 4;
+    display: flex;
+    font-size: calc(20% + 1vw);
+    margin-right: auto;
+    padding: 1%;
+    width: calc((100% - 20px * 2) / 3);
+    margin-left: auto;
+    float: left;
+}
 
+.numLesson {
+    color: #FFFFFF;
+    background: #20bbf4;
+    padding: 1%;
+    justify-content: space-around;
+    font-size: calc(45% + 1vw);
+    margin-right: auto;
+    width: calc((100% - 20px * 2) / 3);
+    margin-left: auto;
+    float: left;
+    flex: 0.2;
+}
 
-    .room {
-        font-size: calc(30% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        display: flex;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-        flex: 1;
-    }
+.subGroup {
+    font-size: calc(40% + 1vw);
+    margin-right: auto;
+    padding: 1%;
+    width: calc((100% - 20px * 2) / 3);
+    margin-left: auto;
+    float: left;
+    flex: 1;
+}
 
-    .timeLesson {
-        font-size: calc(20% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        display: flex;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-        flex: 1;
-    }
-
-    .tableLine {
-        background: #FFFFFF;
-        color: black;
-        margin-left: 1%;
-        margin-right: 1%;
-        box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        border-bottom:1px solid #5C989898;
-        border-right:1px solid #5C989898;
-        margin-bottom: 0.5%;
-        display: flex;
-    }
-
-/*}*/
+.subject {
+    flex: 9;
+    font-size: calc(40% + 1vw);
+    margin-right: auto;
+    padding: 1%;
+    width: calc((100% - 20px * 2) / 3);
+    margin-left: auto;
+    float: left;
+}
 
 
-/*
-@media screen and (max-width: 990px) {
-    .tableLine {
-        background: #FFFFFF;
-        color: black;
-        margin-left: 1%;
-        margin-right: 1%;
-        justify-content: space-around;
-        flex-wrap: wrap;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        border-bottom: 1px solid #5C989898;
-        border-right: 1px solid #5C989898;
-        margin-bottom: 1%;
-        display: flex;
-    }
+.room {
+    font-size: calc(30% + 1vw);
+    margin-right: auto;
+    padding: 1%;
+    display: flex;
+    width: calc((100% - 20px * 2) / 3);
+    margin-left: auto;
+    float: left;
+    flex: 1;
+}
 
-    .teacher {
-        flex: 4;
-        font-size: calc(30% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        align-items: center;
-        display: flex;
-        justify-content: center;
-        width: 220px;
-        margin-left: auto;
-        float: left;
-    }
+.timeLesson {
+    font-size: calc(20% + 1vw);
+    margin-right: auto;
+    padding: 1%;
+    display: flex;
+    width: calc((100% - 20px * 2) / 3);
+    margin-left: auto;
+    float: left;
+    flex: 1;
+}
 
-    .numLesson {
-        color: #FFFFFF;
-        background: #20bbf4;
-        align-items: center;
-        justify-content: center;
-        padding: 1%;
-        font-size: 50px;
-        margin-right: auto;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-    }
-
-    .room {
-        display: flex;
-        font-size: calc(40% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        align-items: center;
-        justify-content: center;
-        width: 90px;
-        margin-left: auto;
-        float: left;
-        flex: 1;
-    }
-
-    .subGroup {
-        font-size: calc(40% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-        flex: 1;
-    }
-
-
-    .subject {
-        flex: 9;
-        font-size: calc(40% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-    }
-
-    .timeLesson {
-        font-size: calc(40% + 1vw);
-        margin-right: auto;
-        padding: 1%;
-        width: calc((100% - 20px * 2) / 3);
-        margin-left: auto;
-        float: left;
-        flex: 1;
-    }
-
-    .numLesson {
-        color: #FFFFFF;
-        background: #20bbf4;
-        flex: 0.3;
-        padding: 1%;
-    }
-
-    .header_img {
-        top: 0;
-        position: fixed;
-        background-size: 100%;
-        width: 100%;
-        height: calc(24% + 1vw);
-    }
-
-    .allTable {
-        top: 20%;
-        left: 0;
-        width: 100%;
-        font-size: 500%;
-    }
-
-    .logoAdmin {
-        position: fixed;
-        max-height: calc(13% + 1vw);
-        top: 20px;
-        left: 20px;
-    }
-
-    .header_space {
-        height: 500px;
-    }
-
-    .footer_space {
-        height: 250px;
-    }
-
-}*/
-/*    .changes {
-        margin-right: 5px;
-        width: calc(30% + 1vw);
-        margin-top: 25px;
-        top: 16%;
-        right: 0.7%;
-        text-decoration: none;
-        border-radius: 50px;
-        padding: 35px;
-        font-size: 50px;
-    }*/
+.tableLine {
+    background: #FFFFFF;
+    color: black;
+    margin-left: 1%;
+    margin-right: 1%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid #5C989898;
+    border-right: 1px solid #5C989898;
+    margin-bottom: 0.5%;
+    display: flex;
+}

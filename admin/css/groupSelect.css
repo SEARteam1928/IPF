@@ -1,0 +1,86 @@
+.groupSelect {
+    padding-top: 15px;
+    position: fixed;
+    height: calc(77% + 1vw);
+    width: calc(10.5% + 1vw);
+    margin-left: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-left: 0;
+    top: 16%;
+    left: calc(9.5% + 1vw);
+}
+
+.groupSelect input {
+    list-style-type: none;
+    border: none;
+    width: calc(120% + 1vw);
+    font-weight: 600;
+    background: none;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.groupSelect input:hover {
+    background: linear-gradient(to bottom, #27b9f4 5%, #27b9f4 100%);
+}
+
+.groupSelect input:active {
+    position: relative;
+    top: 1px;
+}
+
+.groupSelect {
+    padding-top: 15px;
+    position: fixed;
+    height: calc(77% + 1vw);
+    width: calc(10.5% + 1vw);
+    margin-left: 0;
+    overflow: scroll;
+    overflow-x: hidden;
+    padding-left: 0;
+    top: 16%;
+    left: calc(9.5% + 1vw);
+}
+
+.groupSelect input:hover {
+    background: linear-gradient(to bottom, #27b9f4 5%, #27b9f4 100%);
+}
+
+.groupSelect input:active {
+    position: relative;
+    top: 1px;
+}
+
+.groupSelect input {
+    list-style-type: none;
+    border: none;
+    width: calc(120% + 1vw);
+    font-weight: 600;
+    background: none;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+
+}
+
+.groupselectdiv {
+    flex: 1;
+    background: none repeat scroll 0 0 #2b98f4;
+    border: 1px solid #27b9f4;
+    color: #FFFFFF;
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
+    font-size: 12px;
+    padding: 5px;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    border-right: #20bbf4 solid 1px;
+}

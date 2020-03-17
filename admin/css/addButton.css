@@ -1,0 +1,52 @@
+.addBt {
+    background: linear-gradient(to bottom, #69f0ae 5%, #69f0ae 100%);
+    background-color: #69f0ae;
+    border: 1px solid #69f0ae;
+    color: #FFFFFF;
+    width: calc(80% + 1vw);
+    position: relative;
+    font-size: 15px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0 0 10px rgba(43, 189, 126, 0.3);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.addBt:hover {
+    background: linear-gradient(to bottom, #69f0ae 5%, #9fffe0 100%);
+    background-color: #69f0ae;
+}
+
+.addBt:active {
+    position: relative;
+    top: 1px;
+}
+
+
+.addLessonBt {
+    background: linear-gradient(to bottom, #69f0ae 5%, #69f0ae 100%);
+    background-color: #69f0ae;
+    border: 1px solid #69f0ae;
+    color: #FFFFFF;
+    width: calc(80% + 1vw);
+    font-size: 28px;
+    position: relative;
+    left: 50%;
+    margin: 10px;
+    transform: translate(-50%, 0);
+    box-shadow: 0 0 10px rgba(43, 189, 126, 0.3);
+    padding: 5px;
+    border-radius: 10px;
+    border-right: #9fffe0 solid 1px;
+}
+
+.addLessonBt:hover {
+    background: linear-gradient(to bottom, #69f0ae 5%, #9fffe0 100%);
+    background-color: #69f0ae;
+}
+
+.addLessonBt:active {
+    position: relative;
+    top: 1px;
+}

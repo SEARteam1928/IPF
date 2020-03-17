@@ -1,0 +1,33 @@
+.infoBox {
+    position: fixed;
+    width: calc(7.8% + 1vw);
+    height: calc(13% + 1vw);
+    bottom: 0;
+    background: linear-gradient(to bottom, #0079bc 5%, #0079bc 100%);
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 15px;
+    padding: 10px;
+}
+.clock {
+    position: fixed;
+    width: calc(7.8% + 1vw);
+    height: calc(7% + 1vw);
+    bottom: 0;
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 13px;
+    padding: 10px;
+}
+
+.clock div{
+    font-weight: 600;
+    font-family: sans-serif;
+    color: #FFFFFF;
+    text-align: left;
+    font-size: 13px;
+}

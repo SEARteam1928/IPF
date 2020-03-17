@@ -1,0 +1,30 @@
+.changes {
+    text-decoration: none;
+}
+
+.changesFrame{
+    width: 95%;
+    margin-left: 2%;
+    border: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    height: 350%;
+}
+
+.changes {
+    position: fixed;
+    alignment: right;
+    margin-right: 5px;
+    width: calc(6% + 1vw);
+    margin-top: 15px;
+    top: 11%;
+    font-weight: 600;
+    right: 0.7%;
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: #27b9f4;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 17px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.8);
+}
