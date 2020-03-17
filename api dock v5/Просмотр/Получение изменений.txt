@@ -1,0 +1,54 @@
+* -> обязательное поле
+^ -> зависящий параметр от другого ил других
+URL:
+>http://timetable.kcpt-1.ru/api/v3/viewChange
+
+Method:
+>GET
+
+Data:(данные к запросу)
+>"date": string -> дата изменений по умолчанию сегодня, формат даты должен быть '2000-01-01' (Год-месяц-день)
+
+TypeData:
+>JSON
+
+---
+формат ответных данных:
+>"changes": [
+		0 : {	
+			"id":integet,
+			"action":string,
+			"subgroup": integer,
+			"numLesson": integer,
+			"groupname": string,
+			"subject": string,
+			"dayOfWeek": string,
+			"teacher": string,
+			"room": string
+        }
+		...
+	] -> список изменений на день
+		
+Выполнено успешно:
+>"changes": [
+	0 : {	
+			"id":integet,
+			"action":string,
+			"subgroup": integer,
+			"numLesson": integer,
+			"groupname": string,
+			"subject": string,
+			"dayOfWeek": string,
+			"teacher": string,
+			"room": string
+        }
+	...
+] -> список изменений на день (httpcode: 200, messagecode: "OK")
+
+Ошибка валидации:(их пока нет, но в скоре появятся, на валидность даты, так что учти это)
+>"Fails valide parametres" (httpcode: 422, messagecode: "Fails valide parametres")
+
+Ошибка выполнения:
+>(httpcode: 500,501,503, messagecode: "...") -> ошибки на сервере
+
+	

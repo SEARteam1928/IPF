@@ -1,0 +1,33 @@
+* -> обязательное поле
+URL:
+>http://timetable.kcpt-1.ru/api/v3/editChangeInTimetable
+
+Method:
+
+>POST
+
+Data:(данные к запросу)
+>"id":integer* -> id редактиремого измениния (в запросе на изменения есть)
+>"action" : integer* -> id редактиремого действия("Будет", "Отмена" и тд)(опция)
+>"day" : integer*  -> id редактиремого дня (опция) 
+>"group" : integer*  -> id редактируемой группы (опция) 
+>"numLesson" : integer* -> номер редактиремого урока
+>"subgroup" : integer*  -> номер редактируемой группы (опция) 
+>"subject" : integer*  -> id редактиремого предмета (опция) 
+>"teacher" : integer*  -> id редактиремого преподавателя(опция) 
+>"room" : integer*  -> id редактиремого кабинета (опции) 
+
+>"date" : string -> дата изменений в формате '2000-01-01' (Год-месяц-день)(по умолчанию сегодня)()
+
+TypeData:
+>JSON
+
+---
+Выполнено успешно:
+>"ОК" (httpcode: 200, messagecode: "OK")
+
+Ошибка валидации:
+>"Fails valide parametres" (httpcode: 422, messagecode: "Fails valide parametres")
+
+Ошибка выполнения:
+>(httpcode: 500,501,503, messagecode: "...") -> ошибки на сервере

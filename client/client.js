@@ -36,7 +36,20 @@ function clock() {
 
 setInterval(clock, 1000);
 
-
+let isTeacher = localStorage.getItem("isTeacher");
+if(isTeacher === null){
+    if(isTeacher === undefined){
+      isTeacher = false;
+    }
+    isTeacher = false;
+}
+let teacher = localStorage.getItem("teacher");
+if(teacher === null){
+    if(teacher === undefined){
+        teacher = 1;
+    }
+    teacher = 1;
+}
 let group = localStorage.getItem("group");
 if (group === null) {
     if(group === undefined){
@@ -44,7 +57,6 @@ if (group === null) {
     }
     group = 1;
 }
-let groups = {};
 let date = new Date();
 var day = date.getDay();
 if (day === 0) {
@@ -65,8 +77,13 @@ function updateGroups() {
         success(data) {
             console.log(data);
             groupSelect.innerHTML = "";
-            appendInView(data.groups, 'input', groupSelect, group);
-            updateInfo(data.groups)
+            if(isTeacher===false){
+                appendInView(data.groups, 'input', groupSelect, group);
+                updateInfo(data.groups)
+            } else {
+                appendInView(data.teachers, 'input', groupSelect, teacher);
+                updateInfo(data.teachers);
+            }
         },
         error(header, textError) {
             console.log(header.status, header.statusText);
@@ -84,9 +101,15 @@ function getOptionsList() {
         data: {},
         success(data) {
             console.log(data);
-            appendInView(data.groups, 'input', groupSelect, group);
-            appendDayOfWeek(data.dayOfWeek, 'div', daySelect, day);
-            updateInfo(data.groups)
+            if(isTeacher===false) {
+                appendInView(data.groups, 'input', groupSelect, group);
+                appendDayOfWeek(data.dayOfWeek, 'div', daySelect, day);
+                updateInfo(data.groups)
+            } else {
+                appendInView(data.teachers, 'input', groupSelect, teacher);
+                appendDayOfWeek(data.dayOfWeek, 'div', daySelect, day);
+                updateInfo(data.teachers)
+            }
         },
         error(header, textError) {
             console.log(header.status, header.statusText);
@@ -99,6 +122,9 @@ function getOptionsList() {
 function updateInfo(groups) {
     infoBox.innerHTML = "";
 
+    if(isTeacher===false){
+
+
     for (let i = 0; i < groups.length; i++) {
         if (groups[i].id.toString() === group) {
             let infoGroup = document.createElement("div");
@@ -109,6 +135,20 @@ function updateInfo(groups) {
             let infoGroup = document.createElement("div");
             infoGroup.innerHTML = "<div id='infoGroup' class='infoGroup'>" + groups[i].name.toString() + "</div>";
             infoBox.append(infoGroup);
+        }
+    }
+    } else {
+        for (let i = 0; i < groups.length; i++) {
+            if (groups[i].id.toString() === teacher) {
+                let infoGroup = document.createElement("div");
+                infoGroup.innerHTML = "<div id='infoGroup' class='infoGroup'>" + groups[i].full_name.toString() + "</div>";
+                infoBox.append(infoGroup);
+            }
+            if (groups[i].id === teacher) {
+                let infoGroup = document.createElement("div");
+                infoGroup.innerHTML = "<div id='infoGroup' class='infoGroup'>" + groups[i].full_name.toString() + "</div>";
+                infoBox.append(infoGroup);
+            }
         }
     }
 }
@@ -137,7 +177,11 @@ function appendInView(arr, createdElement, appendIn, selectDayOrGroups) {
     for (let i = 0; i < arr.length; i++) {
         let element = document.createElement(createdElement);
 
-        element.setAttribute("value", arr[i].name);
+        if(isTeacher=== false) {
+            element.setAttribute("value", arr[i].name);
+        } else {
+            element.setAttribute("value", arr[i].full_name);
+        }
         element.setAttribute("onclick", "selectGroup(" + arr[i].id + ")");
         element.setAttribute("type", "button");
         element.dataset["id"] = arr[i].id;
@@ -169,151 +213,280 @@ function appendDayOfWeek(arr, createdElement, appendIn, selectDayOrGroups) {
 }
 
 function updateTimetableList(timetableOn) {
-    $.ajax({
-        url: "http://timetable.kcpt-1.ru/api/v3/viewTimetable",
-        type: "get",
-        dataType: "json",
-        data: {
-            "group": group,
-            "day": day
-        },
-        success(data) {
-            console.log(data);
-            allTable.innerHTML = "";
-
-/*
-*/
-
-
-/*
-            let groupNameDiv = document.createElement("div");
-            let dayOfWeek = document.createElement("div");
-
-            groupNameDiv.setAttribute("class", "groupName");
-            dayOfWeek.setAttribute("class", "dayOfWeek");
-
-            if (data.timetable[0] !== undefined) {
-                groupNameDiv.append(data.timetable[0].groupname);
-                dayOfWeek.append(data.timetable[0].dayOfWeek);
-            } else {
-                groupNameDiv.append("Нет занятий!");
+    if(isTeacher === false){
+        $.ajax({
+            url: "http://timetable.kcpt-1.ru/api/v3/viewTimetable",
+            type: "get",
+            dataType: "json",
+            data: {
+                "day": day,
+                "group": group,
+            },
+            success(data) {
+                console.log(data);
+                allTable.innerHTML = "";
+                for (let i = 0; i < data.timetable.length; i++) {
+                    createTableLine(data, i);
+                }
+            },
+            error(header, textError) {
+                console.log(header.status, header.statusText, textError.toString());
+                alert("ААА ПАНИКА ПАНИКАААААА");
             }
-            userInfo.append(groupNameDiv);
-            userInfo.append(" ");
-            userInfo.append(dayOfWeek);
 
-*/
-
-            for (let i = 0; i < data.timetable.length; i++) {
-                createTableLine(data, i);
+        });
+    }
+    else {
+        $.ajax({
+            url: "http://timetable.kcpt-1.ru/api/v3/viewTimetable",
+            type: "get",
+            dataType: "json",
+            data: {
+                "isTeacher": isTeacher,
+                "day": day,
+                "group": group,
+                "teacher": teacher
+            },
+            success(data) {
+                console.log(data);
+                allTable.innerHTML = "";
+                for (let i = 0; i < data.timetable.length; i++) {
+                    createTableLine(data, i);
+                }
+            },
+            error(header, textError) {
+                console.log(header.status, header.statusText, textError.toString());
+                alert("ААА ПАНИКА ПАНИКАААААА");
             }
-        },
-        error(header, textError) {
-            console.log(header.status, header.statusText, textError.toString());
-            alert("ААА ПАНИКА ПАНИКАААААА");
-        }
 
-    });
+        });
+    }
+
+}
+
+
+
+function innerChanges() {
+    allTable.innerHTML = "";
+    allTable.innerHTML = " <iframe src=\"https://docs.google.com/document/d/e/2PACX-1vS2ehAErYyAWY-cm247Pt4oT2YVAkEMwiYXhFu0pxGexUne1PTWNiWS0ktvlglRQqNpLtolGzJjIlvc/pub\" class='changesFrame'>\n" +
+        " </iframe>"
+}
+
+function studentOn() {
+    isTeacher = false;
+    localStorage.setItem("isTeacher", isTeacher);
+    updateTimetableList("Расписание на ");
+    updateGroups();
+}
+
+function teacherOn() {
+    isTeacher = true;
+    localStorage.setItem("isTeacher", isTeacher);
+    updateTimetableList("Расписание на ");
+    updateGroups();
+}
+
+function lessonTimeOn() {
+    alert("lessonTime")
 }
 
 function createTableLine(data, numSubject) {
-    let dive = document.createElement('div');
+    if(isTeacher===false) {
+        let dive = document.createElement('div');
 
-    dive.setAttribute("class", "tableLine");
-    let startStr = "<br>"
-        + "<div class='numLesson lessonBlock'>"
-        + data.timetable[numSubject].numLesson
-        + "</div>"
-        + "<div class='subject lessonBlock'>"
-        + data.timetable[numSubject].subject
-        + " </div>"
-        +
-        "<div class='teacher lessonBlock'>"
-        + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
-        +
-        "<div>"
-        + data.timetable[numSubject].teacher
-        + "</div>"
-        + "</div>"
-        +
-        "<div class='room lessonBlock'>"
-        + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
-        +
-        "<div>"
-        + data.timetable[numSubject].room
-        + "</div>"
-        + "</div>"
-        + "<div class='timeLesson lessonBlock'>"
-        + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
-    let subgroupStartStr = "<br>"
-        + "<div class='numLesson lessonBlock'>"
-        + data.timetable[numSubject].numLesson
-        + "</div>"
-        + "<div class='subject lessonBlock'>"
-        + data.timetable[numSubject].subgroup + ". " + data.timetable[numSubject].subject
-        + " </div>"
-        +
-        "<div class='teacher lessonBlock'>"
-        + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
-        +
-        "<div>"
-        + data.timetable[numSubject].teacher
-        + "</div>"
-        + "</div>"
-        +
-        "<div class='room lessonBlock'>"
-        + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
-        +
-        "<div>"
-        + data.timetable[numSubject].room
-        + "</div>"
-        + "</div>"
-        + "<div class='timeLesson lessonBlock'>"
-        + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
-    if (data.timetable[numSubject].subgroup === 0 || data.timetable[numSubject].subgroup === "0") {
-        if (day === "6") {
-            dive.innerHTML =
-                startStr
-                + timeLessonSt[data.timetable[numSubject].numLesson]
-                + "</div>"
-                + "<br>";
-        } else {
-            dive.innerHTML = startStr
-                + timeLessonMnFr[data.timetable[numSubject].numLesson]
-                + "</div>"
-                + "<br>";
+        dive.setAttribute("class", "tableLine");
+        let startStr = "<br>"
+            + "<div class='numLesson lessonBlock'>"
+            + data.timetable[numSubject].numLesson
+            + "</div>"
+            + "<div class='subject lessonBlock'>"
+            + data.timetable[numSubject].subject
+            + " </div>"
+            +
+            "<div class='teacher lessonBlock'>"
+            + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].teacher
+            + "</div>"
+            + "</div>"
+            +
+            "<div class='room lessonBlock'>"
+            + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].room
+            + "</div>"
+            + "</div>"
+            + "<div class='timeLesson lessonBlock'>"
+            + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
+        let subgroupStartStr = "<br>"
+            + "<div class='numLesson lessonBlock'>"
+            + data.timetable[numSubject].numLesson
+            + "</div>"
+            + "<div class='subject lessonBlock'>"
+            + data.timetable[numSubject].subgroup + ". " + data.timetable[numSubject].subject
+            + " </div>"
+            +
+            "<div class='teacher lessonBlock'>"
+            + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].teacher
+            + "</div>"
+            + "</div>"
+            +
+            "<div class='room lessonBlock'>"
+            + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].room
+            + "</div>"
+            + "</div>"
+            + "<div class='timeLesson lessonBlock'>"
+            + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
+        if (data.timetable[numSubject].subgroup === 0 || data.timetable[numSubject].subgroup === "0") {
+            if (day === "6") {
+                dive.innerHTML =
+                    startStr
+                    + timeLessonSt[data.timetable[numSubject].numLesson]
+                    + "</div>"
+                    + "<br>";
+            } else {
+                dive.innerHTML = startStr
+                    + timeLessonMnFr[data.timetable[numSubject].numLesson]
+                    + "</div>"
+                    + "<br>";
+            }
         }
-    }
-    if (data.timetable[numSubject].subgroup === 1 || data.timetable[numSubject].subgroup === "1") {
-        if (day === "6") {
-            dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"
-                + "<br>";
-        } else {
-            dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"
-                + "<br>";
+        if (data.timetable[numSubject].subgroup === 1 || data.timetable[numSubject].subgroup === "1") {
+            if (day === "6") {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            } else {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            }
         }
-    }
-    if (data.timetable[numSubject].subgroup === 2 || data.timetable[numSubject].subgroup === "2") {
-        if (day === "6") {
-            dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"
-                + "<br>";
-        } else {
-            dive.innerHTML = subgroupStartStr
-                + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"
-                + "<br>";
+        if (data.timetable[numSubject].subgroup === 2 || data.timetable[numSubject].subgroup === "2") {
+            if (day === "6") {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            } else {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            }
         }
+        allTable.append(dive);
     }
-    allTable.append(dive);
+    else {
+        let dive = document.createElement('div');
+
+        dive.setAttribute("class", "tableLine");
+        let startStr = "<br>"
+            + "<div class='numLesson lessonBlock'>"
+            + data.timetable[numSubject].numLesson
+            + "</div>"
+            + "<div class='subject lessonBlock'>"
+            + data.timetable[numSubject].subject
+            + " </div>"
+            +
+            "<div class='teacher lessonBlock'>"
+            + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].groupname
+            + "</div>"
+            + "</div>"
+            +
+            "<div class='room lessonBlock'>"
+            + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].room
+            + "</div>"
+            + "</div>"
+            + "<div class='timeLesson lessonBlock'>"
+            + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
+        let subgroupStartStr = "<br>"
+            + "<div class='numLesson lessonBlock'>"
+            + data.timetable[numSubject].numLesson
+            + "</div>"
+            + "<div class='subject lessonBlock'>"
+            + data.timetable[numSubject].subgroup + ". " + data.timetable[numSubject].subject
+            + " </div>"
+            +
+            "<div class='teacher lessonBlock'>"
+            + "<img src=\"src/baseline_person_black_48.png\" alt=\"person\" class=\"teacher_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].groupname
+            + "</div>"
+            + "</div>"
+            +
+            "<div class='room lessonBlock'>"
+            + "<img src=\"src/baseline_room_black_48.png\" alt=\"person\" class=\"room_ico_img\">"
+            +
+            "<div>"
+            + data.timetable[numSubject].room
+            + "</div>"
+            + "</div>"
+            + "<div class='timeLesson lessonBlock'>"
+            + "<img src=\"src/timeIco48.png\" alt=\"person\" class=\"time_ico_img\">";
+        if (data.timetable[numSubject].subgroup === 0 || data.timetable[numSubject].subgroup === "0") {
+            if (day === "6") {
+                dive.innerHTML =
+                    startStr
+                    + timeLessonSt[data.timetable[numSubject].numLesson]
+                    + "</div>"
+                    + "<br>";
+            } else {
+                dive.innerHTML = startStr
+                    + timeLessonMnFr[data.timetable[numSubject].numLesson]
+                    + "</div>"
+                    + "<br>";
+            }
+        }
+        if (data.timetable[numSubject].subgroup === 1 || data.timetable[numSubject].subgroup === "1") {
+            if (day === "6") {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            } else {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            }
+        }
+        if (data.timetable[numSubject].subgroup === 2 || data.timetable[numSubject].subgroup === "2") {
+            if (day === "6") {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonSt[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            } else {
+                dive.innerHTML = subgroupStartStr
+                    + "<div class='timeLesson'>" + timeLessonMnFr[data.timetable[numSubject].numLesson] + "</div>"
+                    + "<br>";
+            }
+        }
+        allTable.append(dive);
+    }
 }
 
 function selectGroup(opt) {
-    localStorage.setItem("group", opt);
-    group = opt;
+    if(isTeacher === false){
+        localStorage.setItem("group", opt);
+        group = opt;
+    } else {
+        localStorage.setItem("teacher", opt);
+        teacher = opt;
+    }
     updateTimetableList("Расписание на ");
-    updateGroups()
+    updateGroups();
 }
 
 function selectDay(opt) {
@@ -326,6 +499,7 @@ getOptionsList();
 updateTimetableList("Расписание на сегодня: ");
 selectDay(day);
 updateGroups();
+
 clock();
 
 /*window.addEventListener("resize", function () {

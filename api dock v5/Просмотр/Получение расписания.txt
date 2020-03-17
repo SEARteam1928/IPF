@@ -1,0 +1,80 @@
+* -> обязательное поле
+^ -> зависящий параметр от другого ил других
+URL:
+>http://timetable.kcpt-1.ru/api/v3/viewTimetable
+
+Method:
+>GET
+
+Data:(данные к запросу)
+>"day" : integer* -> id дня недели day, из параметра week
+
+>"isTeacher": boolean -> true = преподаватель, false или отсутствие = студент
+
+>"group" : integer^* -> id выбранной group, из параметра groups, используется если "isTeacher" = false или отсутствует(пока не валиден для моментов когда передается не boolean)
+
+>"teacher" : integer^* -> id выбранной teacher, из параметра teachers, используется если "isTeacher" = true
+
+TypeData:
+>JSON
+
+---
+формат ответных данных:
+>"timetable": [
+		0 : {
+            	"subgroup": integer,
+            	"numLesson": integer,
+            	"groupname": string,
+            	"subject": string,
+            	"dayOfWeek": string,
+            	"room": string
+        	}
+		...
+	] -> расписание для преподавателя
+	
+>"timetable": [
+		0 : {
+            	"subgroup": integer,
+            	"numLesson": integer,
+            	"subject": string,
+            	"dayOfWeek": string,
+            	"teacher": string,
+            	"room": string
+        	}
+		...
+	] -> расписание для группы
+
+Выполнено успешно:
+>"timetable": [
+		0 : {
+            	"subgroup": integer,
+            	"numLesson": integer,
+            	"groupname": string,
+            	"subject": string,
+            	"dayOfWeek": string,
+            	"room": string
+        	}
+		...
+	] -> расписание для преподавателя (httpcode: 200, messagecode: "OK")
+	
+>"timetable": [
+		0 : {
+            	"subgroup": integer,
+				"numLesson": integer,
+            	"subject": string,
+            	"dayOfWeek": string,
+            	"teacher": string,
+            	"room": string
+        	}
+		...
+	] -> расписание для группы (httpcode: 200, messagecode: "OK")
+
+
+
+Ошибка валидации:
+>"Fails valide parametres" (httpcode: 422, messagecode: "Fails valide parametres")
+
+Ошибка выполнения:
+>(httpcode: 500,501,503, messagecode: "...") -> ошибки на сервере
+
+	

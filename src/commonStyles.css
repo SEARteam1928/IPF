@@ -84,7 +84,7 @@ body {
 
 .logoAdmin {
     position: fixed;
-    height: calc(11% + 1vw);
+    height: 90px;
     /*
     max-height: calc(12% + 1vw);
     */
