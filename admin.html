@@ -3,11 +3,44 @@
 <head>
     <link rel="stylesheet" href="admin/admin.css">
     <link rel="stylesheet" href="src/commonStyles.css">
+    <link rel="stylesheet" href="admin/modal.css">
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <title>Админ</title>
 </head>
 <body>
+
+
+<div class="navSecond">
+    <img src="src/navigate_second.png" alt="logo" class="navSecondImg">
+</div>
+<div class="navFirst">
+    <img src="src/navigate_first.png" alt="logo" class="navFirstImg">
+</div>
+<div class="menu_all_items">
+    <input value="Студент" onclick="studentOn()" class="menu_items studentMenuBt" type="button">
+    <input value="Преподаватель" onclick="teacherOn()" class="menu_items teacherMenuBt" type="button">
+    <input value="Изменения" onclick="innerChanges()" class="menu_items changes" type="button">
+    <!--
+        <input value="Звонки" onclick="lessonTimeOn()" class="menu_items lessonTimeBt" type="button">
+    -->
+    <!--    <div class="menu_items">
+            Настройки
+        </div>-->
+</div>
+
+<div>
+    <div class="groupselectdiv">
+        <div class="groupSelect" id="groupSelect">
+        </div>
+    </div>
+
+    <div class="dayselectdiv">
+        <div class="daySelect" id="daySelect">
+        </div>
+    </div>
+
+</div>
 <div class="header_space"></div>
 
 
@@ -73,7 +106,6 @@
 <div class="allSelect">
     <div class="groupselectdiv">
         <p>Группа</p>
-        <select class="groupSelect" id="groupSelect" onchange="selectGroup(this)" name="select">
         </select>
         <input class="addBt" value="+" onclick="create(0,0)" type="button">
         <br>
@@ -82,7 +114,6 @@
     </div>
     <div class="dayselectdiv">
         <p>День недели</p>
-        <select class="daySelect" id="daySelect" onchange="selectDay(this)" name="select">
         </select>
     </div>
 </div>
