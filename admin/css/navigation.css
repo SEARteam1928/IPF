@@ -1,0 +1,19 @@
+.navFirstImg {
+    position: fixed;
+    background-size: 100%;
+    height: 100%;
+    left: 0;
+    width: calc(10% + 1vw);
+    display: flex;
+}
+
+
+.navSecondImg {
+    position: fixed;
+    background-size: 100%;
+    height: 100%;
+    left: 0;
+    width: calc(22% + 1vw);
+    display: flex;
+}
+

@@ -13,6 +13,8 @@ body {
     font-size: 100px;
 }
 
+
+
 .groupSelect {
 
 }
@@ -45,16 +47,14 @@ body {
     width: 100%;
 }
 
-
-.table_with_space {
+.allSelect {
     display: flex;
+    flex-wrap: wrap;
+
 }
 
-.nolessondiv{
-    text-shadow: 0 0 10px rgba(0,0,0,0.2);
-    margin-top: 20px;
-    margin-left: 50px;
-    font-weight: 700;
-    font-size: 200%;
-    color: #007abd;
+.allSelect div {
+    flex-wrap: wrap;
+
+
 }

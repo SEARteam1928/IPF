@@ -1,0 +1,145 @@
+
+.roomselectdiv p {
+    font-weight: bold;
+}
+
+.subjectselectdiv p {
+    font-weight: bold;
+}
+
+.teacherselectdiv p {
+    font-weight: bold;
+}
+
+.lessonNumDiv p {
+    font-weight: bold;
+}
+
+.subGroupNumDiv p {
+    font-weight: bold;
+}
+
+.roomselectdiv {
+    flex: 1;
+    background: none repeat scroll 0 0 #2b98f4;
+    border: 1px solid #27b9f4;
+    color: #FFFFFF;
+    flex-wrap: wrap;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+    border-right: #20bbf4 solid 1px;
+}
+
+.subjectselectdiv {
+    flex: 1;
+    background: none repeat scroll 0 0 #2b98f4;
+    border: 1px solid #27b9f4;
+    color: #FFFFFF;
+    margin: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+    border-right: #20bbf4 solid 1px;
+}
+
+.teacherselectdiv {
+    flex: 1;
+    background: none repeat scroll 0 0 #2b98f4;
+    border: 1px solid #27b9f4;
+    color: #FFFFFF;
+    margin: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+    border-right: #20bbf4 solid 1px;
+}
+
+.lessonNumDiv {
+    flex: 1;
+    background: none repeat scroll 0 0 #2b98f4;
+    border: 1px solid #27b9f4;
+    color: #FFFFFF;
+    flex-wrap: wrap;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+    border-right: #20bbf4 solid 1px;
+}
+
+.subGroupNumDiv {
+    flex: 1;
+    background: none repeat scroll 0 0 #2b98f4;
+    border: 1px solid #27b9f4;
+    color: #FFFFFF;
+    margin: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.4);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+    border-right: #20bbf4 solid 1px;
+}
+
+
+.roomSelect {
+    background: none repeat scroll 0 0 rgb(255, 251, 255);
+    border: 1px solid #27b9f4;
+    color: #0070ff;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.3);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.subjectSelect {
+    background: none repeat scroll 0 0 rgb(255, 251, 255);
+    border: 1px solid #27b9f4;
+    color: #0070ff;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.3);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.teacherSelect {
+    background: none repeat scroll 0 0 rgb(255, 251, 255);
+    border: 1px solid #27b9f4;
+    color: #0070ff;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.3);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.lessonNumInput {
+    background: none repeat scroll 0 0 rgb(255, 251, 255);
+    border: 1px solid #27b9f4;
+    color: #0070ff;
+    margin: 10px;
+    box-shadow: 0 0 10px rgba(0, 77, 124, 0.8);
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.subGroupNumInput {
+    background: none repeat scroll 0 0 rgb(255, 251, 255);
+    border: 1px solid #27b9f4;
+    color: #0070ff;
+    margin: 10px;
+    font-size: 12px;
+    padding: 5px;
+    border-radius: 10px;
+}

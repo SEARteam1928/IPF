@@ -1,0 +1,13 @@
+.header_space {
+    height: 129px;
+}
+
+.footer_space {
+    height: 150px;
+}
+
+.left_space {
+    width: calc(38% + 1vw);
+}
+
+
