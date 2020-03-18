@@ -9,7 +9,7 @@
 }
 
 .dayOfWeekNotSelected {
-    background: no-repeat center/100% url("../../src/day_circle_not_selected.png");
+    background: no-repeat center/100% url("../src/day_circle_not_selected.png");
     list-style-type: none;
     font-weight: 600;
     font-family: sans-serif;
@@ -21,7 +21,7 @@
 }
 
 .dayOfWeekNotSelected:hover {
-    background: no-repeat center/100% url("../../src/day_circle_hover.png");
+    background: no-repeat center/100% url("../src/day_circle_hover.png");
 }
 
 .dayOfWeekNotSelected:active {
@@ -30,7 +30,7 @@
 }
 
 .dayOfWeekSelected {
-    background: no-repeat center/100% url("../../src/day_circle_selected.png");
+    background: no-repeat center/100% url("../src/day_circle_selected.png");
     list-style-type: none;
     font-weight: 600;
     font-family: sans-serif;
@@ -42,7 +42,7 @@
 }
 
 .dayOfWeekSelected:hover {
-    background: no-repeat center/100% url("../../src/day_circle_hover.png");
+    background: no-repeat center/100% url("../src/day_circle_hover.png");
 }
 
 .dayOfWeekSelected:active {
